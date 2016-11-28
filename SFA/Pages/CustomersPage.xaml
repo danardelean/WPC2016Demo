@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:statics="clr-namespace:SFA.Statics" Title="{Binding Title}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SFA.CustomersPage">
+	<ContentPage.Content>
+		<ListView
+				RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
+				SeparatorColor="{x:Static statics:Palette._013}"
+				IsPullToRefreshEnabled="True" ItemsSource="{Binding Accounts}" RefreshCommand="{Binding LoadAccountsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+				ItemTapped="CustomerItemTapped"
+				>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell StyleId="disclosure">
+						<ContentView Padding="20,0">
+							<RelativeLayout>
+								<Label x:Name="CompanyLabel" Text="{Binding Company}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" TextColor="{x:Static statics:Palette._006}" FontSize="{x:Static statics:FontSizes._120PercentOfSmall}" XAlign="Start" YAlign="End" LineBreakMode="TailTruncation" />
+								<Label x:Name="ContactName" Text="{Binding DisplayContact}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" TextColor="{x:Static statics:Palette._007}" FontSize="Small" XAlign="Start" YAlign="Start" LineBreakMode="TailTruncation" />
+							</RelativeLayout>
+						</ContentView>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>
